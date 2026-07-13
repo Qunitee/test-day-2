@@ -10,17 +10,12 @@ import {
 import { auth } from '@/firebase/firebase.config.ts'
 import type { AuthUserI } from '@/shared/models/user/auth-user.model.ts'
 import { getFirebaseErrorMessage } from '@/shared/utils/firebase-error.util.ts'
+import type {
+  LoginPayloadI,
+  RegisterPayloadI,
+} from '@/shared/services/auth-service/auth-payload.models.ts'
 
-export interface RegisterPayloadI {
-  name: string
-  email: string
-  password: string
-}
 
-export interface LoginPayloadI {
-  email: string
-  password: string
-}
 
 function mapFirebaseUser(user: User): AuthUserI {
   return {
