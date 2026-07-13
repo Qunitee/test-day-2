@@ -1,13 +1,17 @@
-import type { IconButtonProps } from '@/shared/ui/ui-icon-button/ui-icon-button-props.ts'
-import { UiIcon } from '@/shared/ui/ui-icon/ui-icon.tsx'
 import { Slot } from 'radix-ui'
 
+import { cn } from '@/shared/utils/utils.ts'
+import { UiIcon } from '@/shared/ui/ui-icon/ui-icon.tsx'
+import type { IconButtonProps } from '@/shared/ui/ui-icon-button/ui-icon-button-props.ts'
+
 export function UiIconButton({
-  size,
-  variant,
+  size = 'default',
+  variant = 'default',
   className,
-  asChild,
+  asChild = false,
   name,
+  type,
+  ...props
 }: IconButtonProps) {
   const Comp = asChild ? Slot.Root : 'button'
 
@@ -16,14 +20,11 @@ export function UiIconButton({
       type={!asChild ? (type ?? 'button') : undefined}
       data-slot="button"
       data-variant={variant}
-      className={cn('icon-button', className)}
       data-size={size}
+      className={cn('icon-button', className)}
+      {...props}
     >
-      <UiIcon
-        aria-hidden
-        name={name}
-        size={size ?? (size ? size : 'default')}
-      />
+      <UiIcon aria-hidden name={name} size={size} />
     </Comp>
   )
 }

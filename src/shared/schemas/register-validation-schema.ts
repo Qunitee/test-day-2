@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
-export const loginValidationSchema = z.object({
+export const registerValidationSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters long'),
   email: z
     .string()
     .min(1, 'Email is required')
