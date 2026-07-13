@@ -39,7 +39,7 @@ export function BookingCard({
               open={isEditOpen}
               onOpenChange={setIsEditOpen}
               trigger={
-                <UiButton variant="ghost" size="sm">
+                <UiButton variant="accent-soft" size="sm">
                   Edit
                 </UiButton>
               }

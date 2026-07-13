@@ -43,7 +43,7 @@ export function RoomCard({ room }: RoomCardProps) {
               open={isEditOpen}
               onOpenChange={setIsEditOpen}
               trigger={
-                <UiButton variant="ghost" size="sm">
+                <UiButton variant="accent-soft" size="sm">
                   Edit
                 </UiButton>
               }
