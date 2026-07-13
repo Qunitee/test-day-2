@@ -1,0 +1,123 @@
+$variants: (
+  'default': (
+    rgb(var(--card)),
+    rgb(var(--foreground)),
+    rgb(var(--border)),
+  ),
+  'primary': (
+    rgb(var(--primary)),
+    rgb(var(--primary-foreground)),
+  ),
+  'secondary': (
+    rgb(var(--secondary)),
+    rgb(var(--secondary-foreground)),
+  ),
+  'accent': (
+    rgb(var(--accent)),
+    rgb(var(--accent-foreground)),
+  ),
+  'accent-soft': (
+    rgb(var(--accent-soft)),
+    rgb(var(--accent-soft-fg)),
+  ),
+  'muted': (
+    rgb(var(--muted)),
+    rgb(var(--muted-foreground)),
+  ),
+  'destructive': (
+    rgb(var(--destructive)),
+    rgb(var(--primary-foreground)),
+  ),
+  'destructive-soft': (
+    rgb(var(--destructive) / 0.1),
+    rgb(var(--destructive)),
+  ),
+  'success': (
+    rgb(var(--success)),
+    rgb(var(--primary-foreground)),
+  ),
+  'success-soft': (
+    rgb(var(--success-soft)),
+    rgb(var(--success)),
+  ),
+  'warning': (
+    rgb(var(--warning)),
+    rgb(var(--primary-foreground)),
+  ),
+  'warning-soft': (
+    rgb(var(--warning-soft)),
+    rgb(var(--warning)),
+  ),
+  'outline': (
+    rgb(var(--background)),
+    rgb(var(--foreground)),
+    rgb(var(--border)),
+  ),
+  'ghost': (
+    transparent,
+    rgb(var(--foreground)),
+  ),
+);
+
+$sizes: (
+  'xs': (
+    0.875rem,
+    2rem,
+    0.75rem,
+    0.25rem,
+  ),
+  'sm': (
+    0.875rem,
+    2.25rem,
+    1rem,
+    0.375rem,
+  ),
+  'default': (
+    1rem,
+    2.5rem,
+    1.25rem,
+    0.5rem,
+  ),
+  'lg': (
+    1.125rem,
+    3rem,
+    1.75rem,
+    0.75rem,
+  ),
+  'xl': (
+    1.5rem,
+    4.25rem,
+    2.5rem,
+    1rem,
+  ),
+  'xxl': (
+    2rem,
+    5.5rem,
+    3.5rem,
+    1.25rem,
+  ),
+  '3xl': (
+    2.5rem,
+    7rem,
+    4.5rem,
+    1.5rem,
+  ),
+  '4xl': (
+    3.25rem,
+    8.75rem,
+    5.75rem,
+    1.75rem,
+  ),
+  '5xl': (
+    4rem,
+    11rem,
+    7.25rem,
+    2.25rem,
+  ),
+  '6xl': (
+    5rem,
+    13.5rem,
+    9rem,
+    2.75rem,
+  ),
+);

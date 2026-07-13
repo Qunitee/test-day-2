@@ -1,0 +1,61 @@
+.dark {
+  --background: var(--slate-950);
+  --foreground: var(--slate-50);
+  --card: var(--slate-900);
+  --card-foreground: var(--slate-50);
+  --popover: var(--slate-900);
+  --popover-foreground: var(--slate-50);
+
+  --primary: var(--indigo-400);
+  --primary-foreground: var(--slate-950);
+
+  --secondary: var(--slate-800);
+  --secondary-foreground: var(--slate-200);
+
+  --muted: var(--slate-800);
+  --muted-foreground: var(--slate-400);
+
+  --accent: var(--indigo-400);
+  --accent-foreground: var(--slate-950);
+  --accent-hover: var(--indigo-300);
+  --accent-soft: var(--indigo-950);
+  --accent-soft-fg: var(--indigo-300);
+
+  --destructive: var(--red-500);
+  --destructive-foreground: 255 255 255;
+  --destructive-soft: var(--red-950, 50 5 5);
+  --destructive-soft-fg: var(--red-500);
+
+  --success: var(--green-500);
+  --success-foreground: var(--slate-950);
+  --success-soft: var(--green-950, 5 46 22);
+  --success-soft-fg: var(--green-500);
+
+  --warning: var(--amber-500);
+  --warning-foreground: var(--slate-950);
+  --warning-soft: var(--amber-950, 50 30 0);
+  --warning-soft-fg: var(--amber-500);
+
+  --border: 255 255 255;
+  --border-subtle: 255 255 255;
+  --input: 255 255 255;
+  --input-background: var(--slate-900);
+  --input-disabled: var(--slate-800);
+  --ring: var(--indigo-400);
+
+  --text-primary: var(--slate-50);
+  --text-secondary: var(--slate-400);
+  --text-tertiary: var(--slate-600);
+
+  --surface-base: var(--slate-950);
+  --surface-card: var(--slate-900);
+
+  --sidebar: var(--slate-900);
+  --sidebar-foreground: var(--slate-100);
+  --sidebar-primary: var(--indigo-400);
+  --sidebar-primary-foreground: var(--slate-950);
+  --sidebar-accent: var(--indigo-950);
+  --sidebar-accent-foreground: var(--indigo-300);
+  --sidebar-border: 255 255 255;
+  --sidebar-ring: var(--indigo-400);
+}

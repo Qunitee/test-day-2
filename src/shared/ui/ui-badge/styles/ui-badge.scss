@@ -1,0 +1,33 @@
+@use 'sass:list';
+@use '../../../styles/variants' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  width: fit-content;
+
+  @each $name, $values in $variants {
+    &[data-variant='#{$name}'] {
+      background-color: list.nth($values, 1);
+      color: list.nth($values, 2);
+
+      @if list.length($values) >= 3 {
+        border-color: list.nth($values, 3);
+      }
+    }
+  }
+
+  @each $name, $values in $sizes {
+    &[data-size='#{$name}'] {
+      font-size: list.nth($values, 1);
+      padding-block: calc(#{list.nth($values, 4)} * 0.5);
+      padding-inline: calc(#{list.nth($values, 3)} * 0.5);
+    }
+  }
+}

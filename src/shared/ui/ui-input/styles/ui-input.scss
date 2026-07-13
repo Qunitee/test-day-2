@@ -1,0 +1,54 @@
+@use 'sass:list';
+@use '../../../styles/variants' as *;
+
+@mixin input-size($font-size, $height, $padding-x, $padding-y) {
+  height: $height;
+  font-size: $font-size;
+  padding-block: $padding-y;
+}
+
+.input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgb(var(--input));
+  border-radius: var(--radius-lg);
+  background-color: rgb(var(--input-background));
+  color: rgb(var(--foreground));
+  outline: none;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+  padding-inline: 0.75rem;
+
+  &::placeholder {
+    color: rgb(var(--muted-foreground));
+  }
+
+  &:focus-visible {
+    border-color: rgb(var(--ring));
+    box-shadow: 0 0 0 3px rgb(var(--ring) / 0.5);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: rgb(var(--input-disabled));
+    opacity: 0.5;
+  }
+
+  &[aria-invalid='true'] {
+    border-color: rgb(var(--destructive));
+    box-shadow: 0 0 0 3px rgb(var(--destructive) / 0.2);
+  }
+
+  @each $name, $values in $sizes {
+    &[data-size='#{$name}'] {
+      @include input-size(
+        list.nth($values, 1),
+        list.nth($values, 2),
+        list.nth($values, 3),
+        list.nth($values, 4)
+      );
+    }
+  }
+}

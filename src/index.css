@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/geist';
+
+@import './shared/styles/theme.scss';
+@import './shared/styles/theme-variables/light.scss';
+@import './shared/styles/theme-variables/dark.scss';
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    @apply bg-background text-foreground;
+  }
+  html {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    @apply font-sans;
+  }
+}

@@ -1,0 +1,40 @@
+@use 'sass:list';
+@use '../variants' as *;
+
+@mixin generate-variants($prefix) {
+  @each $name, $values in $variants {
+    $bg: list.nth($values, 1);
+    $fg: list.nth($values, 2);
+
+    $border: transparent;
+    @if list.length($values) >= 3 {
+      $border: list.nth($values, 3);
+    }
+
+    &--#{$name} {
+      background-color: $bg;
+      color: $fg;
+      border-color: $border;
+
+      &:hover:not(:disabled) {
+        background-color: color-mix(in srgb, #{$bg}, #{$fg} 10%);
+      }
+    }
+  }
+}
+
+@mixin generate-sizes($prefix) {
+  @each $name, $values in $sizes {
+    $font: list.nth($values, 1);
+    $height: list.nth($values, 2);
+    $padding: list.nth($values, 3);
+    $gap: list.nth($values, 4);
+
+    &--size-#{$name} {
+      font-size: $font;
+      height: $height;
+      padding-inline: $padding;
+      gap: $gap;
+    }
+  }
+}

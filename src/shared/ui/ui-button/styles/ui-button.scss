@@ -1,0 +1,61 @@
+@use '../../../styles/mixins/variants-mixin' as *;
+
+.button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xl);
+  background-clip: padding-box;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: all var(--duration-base) var(--ease-out);
+
+  &:focus-visible {
+    border-color: rgb(var(--ring));
+    box-shadow: 0 0 0 3px rgb(var(--ring) / 0.5);
+  }
+
+  &:active:not([aria-haspopup]) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &[aria-invalid='true'] {
+    border-color: rgb(var(--destructive));
+    box-shadow: 0 0 0 3px rgb(var(--destructive) / 0.2);
+  }
+
+  &[data-rounded-full='true'] {
+    border-radius: 9999px;
+  }
+
+  svg {
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  @include generate-variants('button');
+  @include generate-sizes('button');
+}
+
+.button--link {
+  background: transparent;
+  border-color: transparent;
+  color: rgb(var(--primary));
+  text-underline-offset: 4px;
+  height: auto;
+  padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
