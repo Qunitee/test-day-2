@@ -1,4 +1,4 @@
-import { orderBy, where } from 'firebase/firestore'
+import { where } from 'firebase/firestore'
 import { FirestoreCrudService } from '@/shared/services/firestore-service/firestore-crud.service.ts'
 import type { BookingI } from '@/shared/models/booking/booking.model.ts'
 
@@ -11,12 +11,17 @@ export class BookingsService extends FirestoreCrudService<BookingI> {
     super('bookings')
   }
 
-  /** All bookings for a given room, ordered by date then start time. */
-  getByRoom(roomId: string): Promise<BookingI[]> {
-    return this.getAll(
-      where('roomId', '==', roomId),
-      orderBy('date'),
-      orderBy('startTime')
+  /**
+   * All bookings for a given room, sorted by date then start time.
+   * Sorting is done client-side to avoid requiring a Firestore composite
+   * index (equality filter + order-by on different fields); the per-room
+   * list is small.
+   */
+  async getByRoom(roomId: string): Promise<BookingI[]> {
+    const bookings = await this.getAll(where('roomId', '==', roomId))
+    return bookings.sort(
+      (a, b) =>
+        a.date.localeCompare(b.date) || a.startTime.localeCompare(b.startTime)
     )
   }
 }
