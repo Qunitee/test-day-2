@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   CardContent,
   CardHeader,
@@ -10,6 +11,7 @@ import { ConfirmDialog } from '@/shared/components/confirm-dialog/confirm-dialog
 import { RoomFormDialog } from '@/features/rooms/room-form/room-form-dialog.tsx'
 import { useDeleteRoom } from '@/features/rooms/hooks/use-room-mutations.ts'
 import { useAuthStore } from '@/shared/store/auth-store/auth-store.ts'
+import { buildRoomDetailsPath } from '@/shared/constants/routes.ts'
 import type { RoomI } from '@/shared/models/room/room.model.ts'
 
 interface RoomCardProps {
@@ -26,7 +28,14 @@ export function RoomCard({ room }: RoomCardProps) {
   return (
     <UiCard className="p-4 gap-3">
       <CardHeader className="p-0 flex-row items-start justify-between gap-2">
-        <CardTitle>{room.name}</CardTitle>
+        <CardTitle>
+          <Link
+            to={buildRoomDetailsPath(room.id)}
+            className="hover:underline"
+          >
+            {room.name}
+          </Link>
+        </CardTitle>
         {isOwner && (
           <div className="flex gap-1">
             <RoomFormDialog

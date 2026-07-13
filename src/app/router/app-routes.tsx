@@ -3,6 +3,7 @@ import { ProtectedRoute } from '@/features/auth/protected-route/protected-route.
 import { LoginPage } from '@/pages/login/login-page.tsx'
 import { RegisterPage } from '@/pages/register/register-page.tsx'
 import { RoomsPage } from '@/pages/rooms/rooms-page.tsx'
+import { RoomDetailsPage } from '@/pages/room-details/room-details-page.tsx'
 import { AppRoute } from '@/shared/constants/routes.ts'
 
 export function AppRoutes() {
@@ -13,6 +14,7 @@ export function AppRoutes() {
 
       <Route element={<ProtectedRoute />}>
         <Route path={AppRoute.Home} element={<RoomsPage />} />
+        <Route path={AppRoute.RoomDetails} element={<RoomDetailsPage />} />
       </Route>
 
       <Route path="*" element={<Navigate to={AppRoute.Home} replace />} />
