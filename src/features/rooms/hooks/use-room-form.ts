@@ -37,7 +37,12 @@ export function useRoomForm({ room, onSuccess }: UseRoomFormI = {}) {
     if (isEdit && room) {
       await updateRoom.mutateAsync({ id: room.id, payload: values })
     } else {
-      if (!user) throw new Error('You must be signed in to create a room')
+      if (!user) {
+        methods.setError('root', {
+          message: 'You must be signed in to create a room',
+        })
+        return
+      }
       await createRoom.mutateAsync({
         ...values,
         createdBy: user.uid,
@@ -47,11 +52,14 @@ export function useRoomForm({ room, onSuccess }: UseRoomFormI = {}) {
     onSuccess?.()
   })
 
+  const error =
+    mutation.error?.message ?? methods.formState.errors.root?.message ?? null
+
   return {
     submit,
     isEdit,
     isPending: mutation.isPending,
-    error: mutation.error,
+    error,
     ...methods,
   }
 }

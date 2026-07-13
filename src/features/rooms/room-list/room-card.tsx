@@ -6,6 +6,7 @@ import {
   UiCard,
 } from '@/shared/ui/ui-card/ui-card.tsx'
 import { UiButton } from '@/shared/ui/ui-button/ui-button.tsx'
+import { ConfirmDialog } from '@/shared/components/confirm-dialog/confirm-dialog.tsx'
 import { RoomFormDialog } from '@/features/rooms/room-form/room-form-dialog.tsx'
 import { useDeleteRoom } from '@/features/rooms/hooks/use-room-mutations.ts'
 import { useAuthStore } from '@/shared/store/auth-store/auth-store.ts'
@@ -38,14 +39,22 @@ export function RoomCard({ room }: RoomCardProps) {
                 </UiButton>
               }
             />
-            <UiButton
-              variant="destructive-soft"
-              size="sm"
-              disabled={deleteRoom.isPending}
-              onClick={() => deleteRoom.mutate(room.id)}
-            >
-              {deleteRoom.isPending ? 'Deleting…' : 'Delete'}
-            </UiButton>
+            <ConfirmDialog
+              title="Delete room?"
+              description={`"${room.name}" and its members will be permanently removed. This cannot be undone.`}
+              confirmLabel="Delete"
+              isPending={deleteRoom.isPending}
+              onConfirm={() => deleteRoom.mutateAsync(room.id)}
+              trigger={
+                <UiButton
+                  variant="destructive-soft"
+                  size="sm"
+                  disabled={deleteRoom.isPending}
+                >
+                  {deleteRoom.isPending ? 'Deleting…' : 'Delete'}
+                </UiButton>
+              }
+            />
           </div>
         )}
       </CardHeader>

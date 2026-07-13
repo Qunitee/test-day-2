@@ -50,7 +50,7 @@ export function RoomFormDialog({
             control={control}
           />
           {error && (
-            <span className="text-sm text-destructive">{error.message}</span>
+            <span className="text-sm text-destructive">{error}</span>
           )}
           <DialogFooter>
             <UiButton type="submit" variant="primary" disabled={isPending}>
