@@ -37,7 +37,16 @@ export class AuthService {
         email,
         password
       )
-      await updateProfile(user, { displayName: name })
+
+      // Пользователь уже создан. Если updateProfile упадёт — не проваливаем
+      // регистрацию (иначе на повторе будет "email already in use"),
+      // а имя всё равно возвращаем из payload.
+      try {
+        await updateProfile(user, { displayName: name })
+      } catch (profileError) {
+        console.error(getFirebaseErrorMessage(profileError))
+      }
+
       return { ...mapFirebaseUser(user), name }
     } catch (error) {
       throw new Error(getFirebaseErrorMessage(error), { cause: error })

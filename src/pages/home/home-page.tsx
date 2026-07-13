@@ -9,14 +9,16 @@ export function HomePage() {
   const user = useAuthStore(s => s.user)
   const navigate = useNavigate()
   const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleLogout = async () => {
+    setError(null)
     setIsLoggingOut(true)
     try {
       await authService.logout()
       navigate(AppRoute.Login, { replace: true })
     } catch (e) {
-      console.error(e instanceof Error ? e.message : 'Logout failed')
+      setError(e instanceof Error ? e.message : 'Logout failed')
     } finally {
       setIsLoggingOut(false)
     }
@@ -36,6 +38,7 @@ export function HomePage() {
       >
         {isLoggingOut ? 'Logging out…' : 'Logout'}
       </UiButton>
+      {error && <span className="text-sm text-destructive">{error}</span>}
     </div>
   )
 }
